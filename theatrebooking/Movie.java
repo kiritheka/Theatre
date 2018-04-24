@@ -3,10 +3,10 @@ package theatrebooking;
 public class Movie {
 
 	public enum MoviesAvailable {
-		Movie1, Movie2, Movie3, Movie4
+		MOVIE1, MOVIE2, MOVIE3, MOVIE4
 	}
 
-	/*MoviesAvailable movieName;
+	MoviesAvailable movieName;
 	double movieRating;
 	String movieLanguage;
 
@@ -14,6 +14,6 @@ public class Movie {
 		this.movieName = movieName;
 		this.movieRating = movieRating;
 		this.movieLanguage = movieLanguage;
-	}*/
+	}
 
 }
