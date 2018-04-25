@@ -3,46 +3,55 @@ package theatrebooking;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import theatrebooking.Movie.MoviesAvailable;
-import theatrebooking.Theatre.SeatingType;
-import theatrebooking.Theatre.ShowAndTiming;
-
 public class TheatreController {
+	MovieController movieController = new MovieController();
 
-	LinkedHashMap<ShowAndTiming, MoviesAvailable> showTimingAndMovieForfun = new LinkedHashMap<ShowAndTiming, MoviesAvailable>() {{
-		put(Theatre.ShowAndTiming.morningshow,Movie.MoviesAvailable.MOVIE1);
-		put(Theatre.ShowAndTiming.noonshow,Movie.MoviesAvailable.MOVIE1);
-		put(Theatre.ShowAndTiming.eveningshow,Movie.MoviesAvailable.MOVIE2);
+	Seater silver = new Seater("silver", 2, 100);
+	Seater gold = new Seater("gold", 20, 200);
+	Seater diamond = new Seater("diamond", 10, 400);
+	LinkedHashMap<String, Seater> seatingInFun = new LinkedHashMap<String, Seater>() {
+		{
+			put(silver.seaterName, silver);
+			put(gold.seaterName, gold);
+			put(diamond.seaterName, diamond);
+		}
+	};
 
-	}};
-	LinkedHashMap<SeatingType, Integer> seatingTypeAndPriceForfun = new LinkedHashMap<SeatingType, Integer>() {{
-		put(Theatre.SeatingType.silver,100);
-		put(Theatre.SeatingType.gold,200);
-		put(Theatre.SeatingType.diamond,300);
+	Shows morning = new Shows("morning", "9.30AM", movieController.bigHero);
+	Shows noon = new Shows("noon", "12.30PM", movieController.aram);
+	Shows evening = new Shows("evening", "5.00PM", movieController.happy);
+	LinkedHashMap<String, Shows> showsInFun = new LinkedHashMap<String, Shows>() {
+		{
+			put(morning.showName, morning);
+			put(noon.showName, noon);
+			put(evening.showName, evening);
+		}
+	};
 
-	}};
+	Theatre fun = new Theatre("Fun", 3, seatingInFun, showsInFun);
 
-	Theatre fun = new Theatre("Fun", 3, showTimingAndMovieForfun, seatingTypeAndPriceForfun);
+	Seater class1 = new Seater("class1", 40, 100);
+	Seater class2 = new Seater("class2", 50, 300);
+	Seater class3 = new Seater("class3", 10, 500);
+	LinkedHashMap<String, Seater> seatingInCity = new LinkedHashMap<String, Seater>() {
+		{
+			put(class1.seaterName, class1);
+			put(class2.seaterName, class2);
+			put(class3.seaterName, class3);
+		}
+	};
 
+	Shows night = new Shows("night", "8.00PM", movieController.dangal);
+	LinkedHashMap<String, Shows> showsInCity = new LinkedHashMap<String, Shows>() {
+		{
+			put(morning.showName, morning);
+			put(noon.showName, noon);
+			put(evening.showName, evening);
+			put(night.showName, night);
+		}
+	};
 
-	LinkedHashMap<ShowAndTiming, MoviesAvailable> showTimingAndMovieforcity = new LinkedHashMap<ShowAndTiming, MoviesAvailable>() {{
-		put(Theatre.ShowAndTiming.morningshow,Movie.MoviesAvailable.MOVIE1);
-		put(Theatre.ShowAndTiming.noonshow,Movie.MoviesAvailable.MOVIE2);
-		put(Theatre.ShowAndTiming.eveningshow,Movie.MoviesAvailable.MOVIE3);
-		put(Theatre.ShowAndTiming.nightshow,Movie.MoviesAvailable.MOVIE4);
-
-
-	}};
-	LinkedHashMap<SeatingType, Integer> seatingTypeAndPriceforcity = new LinkedHashMap<SeatingType, Integer>() {{
-		put(Theatre.SeatingType.silver,100);
-		put(Theatre.SeatingType.gold,200);
-		put(Theatre.SeatingType.diamond,300);
-		put(Theatre.SeatingType.platinum,500);
-
-	}};
-
-	Theatre city = new Theatre("City", 100, showTimingAndMovieforcity, seatingTypeAndPriceforcity);
-
+	Theatre city = new Theatre("City", 100, seatingInCity, showsInCity);
 
 	public ArrayList<Theatre> getlistOfTheatre() {
 		ArrayList<Theatre> listOfLevel = new ArrayList<Theatre>();
