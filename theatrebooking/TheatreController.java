@@ -1,17 +1,21 @@
 package theatrebooking;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
+import theatrebooking.Seater.SeaterType;
 
 public class TheatreController {
 	ShowsController showsController = new ShowsController();
 
-	Seater silver = new Seater("silver", 2, 100);
-	Seater gold = new Seater("gold", 20, 200);
-	Seater diamond = new Seater("diamond", 10, 400);
-	ArrayList<Seater> seatingInFun = new ArrayList<Seater>() {{
-			add(silver);
-			add(gold);
-			add(diamond);
+	Seater silver = new Seater(SeaterType.silver, 100);
+	Seater gold = new Seater(SeaterType.gold, 200);
+	Seater diamond = new Seater(SeaterType.diamond,400);
+	LinkedHashMap<Seater, Integer> seatAndCapacityInFun = new LinkedHashMap<Seater, Integer>() {{
+			put(silver,20);
+			put(gold,20);
+			put(diamond,10);
 		}};
 
 	ArrayList<Shows> showsInFun = new ArrayList<Shows>() {{
@@ -20,15 +24,15 @@ public class TheatreController {
 			add(showsController.evening);
 		}};
 
-	Theatre fun = new Theatre("Fun", 3, seatingInFun, showsInFun);
+	Theatre fun = new Theatre("Fun", 50, seatAndCapacityInFun, showsInFun);
 
-	Seater class1 = new Seater("class1", 40, 100);
-	Seater class2 = new Seater("class2", 50, 300);
-	Seater class3 = new Seater("class3", 10, 500);
-	ArrayList<Seater> seatingInCity = new ArrayList<Seater>() {{
-			add(class1);
-			add(class2);
-			add(class3);
+	Seater class1 = new Seater(SeaterType.class1, 100);
+	Seater class2 = new Seater(SeaterType.class2, 300);
+	Seater class3 = new Seater(SeaterType.class3, 500);
+	LinkedHashMap<Seater, Integer> seatAndCapacityInCity = new LinkedHashMap<Seater, Integer>() {{
+			put(class1,50);
+			put(class2,25);
+			put(class3,25);
 		}};
 
 	ArrayList<Shows> showsInCity = new ArrayList<Shows>() {{
@@ -38,7 +42,7 @@ public class TheatreController {
 			add(showsController.night);
 		}};
 
-	Theatre city = new Theatre("City", 100, seatingInCity, showsInCity);
+	Theatre city = new Theatre("City", 100, seatAndCapacityInCity, showsInCity);
 
 	public ArrayList<Theatre> getlistOfTheatre() {
 		ArrayList<Theatre> listOfLevel = new ArrayList<Theatre>();

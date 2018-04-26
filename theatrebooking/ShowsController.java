@@ -30,12 +30,11 @@ public class ShowsController {
 				if (show.movie.movieName.equalsIgnoreCase(movieSelected)) {
 					listOfShowForMovie.add(show);
 				}
-				return listOfShowForMovie;
 			} else {
 				System.out.println("No such movie is available");
 			}
-
 		}
-		return null;
+		return listOfShowForMovie;
+		
 	}
 }

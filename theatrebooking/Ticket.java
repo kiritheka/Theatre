@@ -1,16 +1,18 @@
 package theatrebooking;
 
+import theatrebooking.Seater.SeaterType;
+
 public class Ticket {
 
 	int ticketId;
 	String theatreName;
-	String seaterName;
+	SeaterType seaterName;
 	int price;
 	String showName;
 	String showTiming;
 	String movieName;
 
-	Ticket(int ticketId, String theatreName, String seaterName, int price, String showName, String showTiming,
+	Ticket(int ticketId, String theatreName, SeaterType seaterName, int price, String showName, String showTiming,
 			String movieName) {
 		this.ticketId = ticketId;
 		this.theatreName = theatreName;
