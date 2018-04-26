@@ -11,5 +11,4 @@ public class Movie {
 		this.movieRating = movieRating;
 		this.movieLanguage = movieLanguage;
 	}
-
 }
