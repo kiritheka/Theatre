@@ -1,6 +1,7 @@
 package theatrebooking;
 
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
 public class Shows {
 
@@ -9,38 +10,47 @@ public class Shows {
 	Movie movie;
 	Theatre theatre;
 
-	Shows(String showName, String showTiming, Movie movie, Theatre theatre) {
+	public Shows(String showName, String showTiming, Movie movie, Theatre theatre) {
 		this.showName = showName;
 		this.showTiming = showTiming;
 		this.movie = movie;
 		this.theatre = theatre;
-
 	}
 
-	int totalcapacity = 0;
+	int seatsBooked = 0;
 	LinkedHashMap<Seater, Integer> seaterAndTicket = new LinkedHashMap<Seater, Integer>();
 
-	public LinkedHashMap<Seater, Integer> bookTicket(Seater userSeater) {
-
-		if (theatre.seatAndCapacity.containsKey(userSeater)) {
-			if (totalcapacity < theatre.capacity) {
-				if (seaterAndTicket.get(userSeater) == null) {
-					seaterAndTicket.put(userSeater, 1);
-					totalcapacity++;
-
-					return seaterAndTicket;
-				} else {
-					if (seaterAndTicket.get(userSeater) < theatre.seatAndCapacity.get(userSeater)) {
-						seaterAndTicket.put(userSeater, seaterAndTicket.get(userSeater) + 1);
-						totalcapacity++;
-
+	public LinkedHashMap<Seater, Integer> bookTicket(String seaterSelection) {
+		Seater userSeater = null;
+		for (Seater seater : theatre.seatTypeAndCapacity.keySet()) {
+			if (seater.seaterName.name().equalsIgnoreCase(seaterSelection)) {
+				userSeater = seater;
+				if (seatsBooked < theatre.capacity)
+					if (seaterAndTicket.get(userSeater) == null) {
+						seaterAndTicket.put(userSeater, 1);
+						seatsBooked++;
 						return seaterAndTicket;
 					} else {
-						System.out.println("No space available in this type");
+						if (seaterAndTicket.get(userSeater) < theatre.seatTypeAndCapacity.get(userSeater)) {
+							seaterAndTicket.put(userSeater, seaterAndTicket.get(userSeater) + 1);
+							seatsBooked++;
+							return seaterAndTicket;
+						} else {
+							System.out.format("No space available in %s type %n",seaterSelection);
+							return null;
+						}
 					}
-				}
+				break;
 			}
 		}
 		return null;
+	}
+
+	public int getRevenueForShow() {
+		int price = 0;
+		for (Entry<Seater, Integer> entry : seaterAndTicket.entrySet()) {
+			price = price + (entry.getValue() * entry.getKey().price);
+		}
+		return price;
 	}
 }

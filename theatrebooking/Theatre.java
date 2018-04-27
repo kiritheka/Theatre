@@ -6,11 +6,11 @@ public class Theatre {
 
 	String theatreName;
 	int capacity;
-	HashMap<Seater, Integer> seatAndCapacity;
+	HashMap<Seater, Integer> seatTypeAndCapacity;
 
-	Theatre(String theatreName, int capacity, HashMap<Seater, Integer> seatAndCapacity) {
+	Theatre(String theatreName, int capacity, HashMap<Seater, Integer> seatTypeAndCapacity) {
 		this.theatreName = theatreName;
 		this.capacity = capacity;
-		this.seatAndCapacity = seatAndCapacity;
+		this.seatTypeAndCapacity = seatTypeAndCapacity;
 	}
 }

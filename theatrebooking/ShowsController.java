@@ -2,13 +2,11 @@ package theatrebooking;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Map.Entry;
 
 public class ShowsController {
 
 	MovieController movieController = new MovieController();
 	TheatreController theatreController = new TheatreController();
-	LinkedHashMap<Shows, Integer> showAndRevenue = new LinkedHashMap<Shows, Integer>();
 	LinkedHashMap<Shows, Integer> showAndTicketDetails = new LinkedHashMap<Shows, Integer>();
 
 	Shows morningfun = new Shows("morning", "9.30AM", movieController.bigHero, theatreController.fun);
@@ -39,23 +37,9 @@ public class ShowsController {
 				if (show.movie.movieName.equalsIgnoreCase(movieSelected))
 					listOfShowForMovie.add(show);
 			} else {
-				System.out.println("No such movie is available");
+				System.out.format("%s movie is not available now %n",movieSelected);
 			}
 		}
 		return listOfShowForMovie;
-	}
-
-	public LinkedHashMap<Shows, Integer> getRevenueForShow() {
-		for (Shows show : getlistOfShows()) {
-			int price = 0;
-			for (Entry<Seater, Integer> entry : show.seaterAndTicket.entrySet()) {
-				System.out.println("nowseat" + entry.getValue());
-				System.out.println("in entry seater" + entry.getKey().price);
-				price = price + (entry.getValue() * entry.getKey().price);
-			}
-			showAndRevenue.put(show, price);
-			System.out.println("price" + price + show.showName + "" + show.theatre.theatreName);
-		}
-		return showAndRevenue;
 	}
 }

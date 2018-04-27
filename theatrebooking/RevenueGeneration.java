@@ -6,18 +6,15 @@ import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 public class RevenueGeneration {
-	ShowsController showsController = new ShowsController();
 	Logger LOGGER = Logger.getLogger(RevenueGeneration.class.getName());
 
 	public void generateRevenueReport(LinkedHashMap<Shows, Integer> showAndRevenue) {
 		try {
-			FileWriter fileWriter = new FileWriter("/home/linuxuser/Theatre Revenue.csv");
-			fileWriter.append("Theatre, show timing, Total amount Sold");
-			fileWriter.append("\n");
 			if (showAndRevenue != null) {
-				System.out.println("inn");
+				FileWriter fileWriter = new FileWriter("/home/linuxuser/Theatre Revenue.csv");
+				fileWriter.append("Theatre, show timing, Total amount Sold");
+				fileWriter.append("\n");
 				for (Entry<Shows, Integer> showRevenue : showAndRevenue.entrySet()) {
-					System.out.println(showRevenue.getKey().theatre.theatreName);
 					fileWriter.append(showRevenue.getKey().theatre.theatreName);
 					fileWriter.append(",");
 					fileWriter.append(showRevenue.getKey().showName);
@@ -26,14 +23,13 @@ public class RevenueGeneration {
 					fileWriter.append(showRevenue.getValue().toString());
 					fileWriter.append("\n");
 				}
+
+				LOGGER.info("Stored in file successfully !!!");
+				fileWriter.flush();
+				fileWriter.close();
 			}
-			LOGGER.info("Stored in file successfully !!!");
-			fileWriter.flush();
-			fileWriter.close();
 		} catch (Exception e) {
 			LOGGER.warning("Error in writing !!!" + e);
-
 		}
-
 	}
 }
