@@ -21,11 +21,10 @@ public class MovieController {
 
 	public String checkForMovie(String movieSelected) {
 		for (Movie movie : getlistOfMovies()) {
-			if (movie.movieName.equalsIgnoreCase(movieSelected))
+			if (movie.movieName.equalsIgnoreCase(movieSelected)) {
 				return movieSelected;
+			}
 		}
 		return null;
-
 	}
-
 }
