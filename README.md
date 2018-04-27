@@ -9,10 +9,10 @@ Type: `enum`
 Theatre contains different seatingArrangements with different price tags
 #### Show
 Type: `object` 
-Show conatins specific show name with timing and movie corresponding to a particular Theatre
+Show contains specific show name with timing and movie corresponding to a particular Theatre
 #### Theatre
 Type: `object`
-Theatre conatins specific name to it with maximum seating capacity with different seating types
+Theatre contains specific name to it with maximum seating capacity with different seating types
 
 ### Methods
 #### .bookTicketForShow()
