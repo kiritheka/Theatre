@@ -17,20 +17,20 @@ Theatre contains specific name to it with maximum seating capacity with differen
 ### Methods
 #### .bookTicketForShow()
 Type: `function`  
-Inputs: `SeatingType`
-Generates ticket number for particular show and seating type after checking availability of seats for a show.
+Inputs: `SeatingType`  
+Generates ticket number for particular show and seating type after checking availability of seats for a show.  
 Returns: ticketnumber
 
 #### .getListOfShowsForMovie()
 Type: `function`  
-Inputs: `movie name`
-get list of all shows in available theatres with a given movie screening in it.
+Inputs: `movie name`  
+get list of all shows in available theatres with a given movie screening in it.  
 Returns: ticketnumber
 
 #### .getTotalRevenueForShow()
 Type: `function`  
-Inputs: `show`
-Computes total revenue generated for a particular theatre for each show.
+Inputs: `show`  
+Computes total revenue generated for a particular theatre for each show.  
 Returns: totalrevenue
 
 
