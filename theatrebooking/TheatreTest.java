@@ -4,6 +4,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -22,7 +23,9 @@ class TheatreTest {
 	MovieController movieController = new MovieController();
 	TheatreController theatreController = new TheatreController();
 	ShowController showController = new ShowController();
-	CSVReport revenueGeneration = new CSVReport();
+	CSVReport csvReport = new CSVReport();
+	PDFReport pdfReport = new PDFReport();
+
 
 	ArrayList<Show> listOfShowForMovie = new ArrayList<Show>();
 	String movieName;
@@ -61,9 +64,8 @@ class TheatreTest {
 
 		// capacity of gold seater =20
 
-		/*
-		 * returns null when ticket is booked against unknown seatType or when
-		 * particular seaterType all seats are booked
+		/* returns null when ticket is booked against unknown seatType or 
+		 * when particular seaterType all seats are booked
 		 */
 		assertEquals(false, showController.morningfun.bookTicket("empty", 2));
 		assertEquals(true, showController.morningfun.bookTicket("gold", 9));
@@ -76,9 +78,11 @@ class TheatreTest {
 
 	@Test
 	void doCheckingException() {
-		exception.expect(FileNotFoundException.class);
+		exception.expect(IOException.class);
 		exception.expectMessage("Invalid Location to write");
-		//revenueGeneration.generateRevenueReport(null);
+		csvReport.generateRevenueReport(null);
+		pdfReport.generateRevenueReport(null);
+
 	}
 
 }
