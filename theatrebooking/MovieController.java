@@ -19,12 +19,12 @@ public class MovieController {
 		return listOfMovies;
 	}
 
-	public String checkForMovie(String movieSelected) {
+	public boolean checkForMovie(String movieSelected) {
 		for (Movie movie : getlistOfMovies()) {
-			if (movie.movieName.equalsIgnoreCase(movieSelected)) {
-				return movieSelected;
+			if (movie.name.equalsIgnoreCase(movieSelected)) {
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 }

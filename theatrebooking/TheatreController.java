@@ -3,14 +3,14 @@ package theatrebooking;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import theatrebooking.Seater.SeaterType;
+import theatrebooking.Seater.Type;
 
 public class TheatreController {
 
-	Seater silver = new Seater(SeaterType.silver, 100);
-	Seater gold = new Seater(SeaterType.gold, 200);
-	Seater diamond = new Seater(SeaterType.diamond, 400);
-	Seater platinum = new Seater(SeaterType.platinum,500);
+	Seater silver = new Seater(Type.silver, 100);
+	Seater gold = new Seater(Type.gold, 200);
+	Seater diamond = new Seater(Type.diamond, 400);
+	Seater platinum = new Seater(Type.platinum,500);
 	LinkedHashMap<Seater, Integer> seatAndCapacityInFun = new LinkedHashMap<Seater, Integer>() {{
 			put(silver, 20);
 			put(gold, 10);
@@ -20,9 +20,9 @@ public class TheatreController {
 		}};
 	public Theatre fun = new Theatre("Fun", 50, seatAndCapacityInFun);
 
-	Seater class1 = new Seater(SeaterType.class1, 100);
-	Seater class2 = new Seater(SeaterType.class2, 300);
-	Seater class3 = new Seater(SeaterType.class3, 500);
+	Seater class1 = new Seater(Type.class1, 100);
+	Seater class2 = new Seater(Type.class2, 300);
+	Seater class3 = new Seater(Type.class3, 500);
 	LinkedHashMap<Seater, Integer> seatAndCapacityInCity = new LinkedHashMap<Seater, Integer>() {{
 			put(class1, 50);
 			put(class2, 25);

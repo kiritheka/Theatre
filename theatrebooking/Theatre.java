@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class Theatre {
 
-	String theatreName;
+	String name;
 	int capacity;
-	HashMap<Seater, Integer> seatTypeAndCapacity;
+	HashMap<Seater, Integer> seatAndCapacity;
 
-	Theatre(String theatreName, int capacity, HashMap<Seater, Integer> seatTypeAndCapacity) {
-		this.theatreName = theatreName;
+	Theatre(String name, int capacity, HashMap<Seater, Integer> seatAndCapacity) {
+		this.name = name;
 		this.capacity = capacity;
-		this.seatTypeAndCapacity = seatTypeAndCapacity;
+		this.seatAndCapacity = seatAndCapacity;
 	}
 }

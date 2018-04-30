@@ -2,15 +2,15 @@ package theatrebooking;
 
 public class Seater {
 
-	 enum SeaterType {
+	enum Type {
 		silver, gold, diamond, platinum, class1, class2, class3
 	}
 
-	SeaterType seaterName;
+	Type name;
 	int price;
 
-	public Seater(SeaterType seaterName, int price) {
-		this.seaterName = seaterName;
+	public Seater(Type name, int price) {
+		this.name = name;
 		this.price = price;
 
 	}

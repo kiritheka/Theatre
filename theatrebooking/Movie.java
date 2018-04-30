@@ -2,13 +2,13 @@ package theatrebooking;
 
 public class Movie {
 
-	String movieName;
-	double movieRating;
-	String movieLanguage;
+	String name;
+	double rating;
+	String language;
 
-	public Movie(String movieName, double movieRating, String movieLanguage) {
-		this.movieName = movieName;
-		this.movieRating = movieRating;
-		this.movieLanguage = movieLanguage;
+	public Movie(String name, double rating, String language) {
+		this.name = name;
+		this.rating = rating;
+		this.language = language;
 	}
 }
