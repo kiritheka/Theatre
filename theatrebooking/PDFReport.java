@@ -23,6 +23,7 @@ public class PDFReport implements RevenueGeneration {
 		Logger LOGGER = Logger.getLogger(PDFReport.class.getName());
 		Document document = new Document();
 		try {
+
 			PdfWriter.getInstance(document, new FileOutputStream(new File("/home/linuxuser/Theatre Revenue.pdf")));
 			document.open();
 			PdfPTable table = new PdfPTable(3);
@@ -40,22 +41,23 @@ public class PDFReport implements RevenueGeneration {
 			table.addCell(c1);
 			table.setHeaderRows(1);
 			document.add(table);
-
-			for (Show show : listOfShow) {
-				int revenue = 0;
-				for (Entry<Seater, Integer> entry : show.seatAndFilledCount.entrySet()) {
-					revenue = revenue + (entry.getValue() * entry.getKey().price);
-				}
-				if (show != null) {
-					table.addCell(show.theatre.name);
-					table.addCell(show.name);
-					table.addCell("Rs." + String.valueOf(revenue));
+			if (listOfShow != null) {
+				for (Show show : listOfShow) {
+					int revenue = 0;
+					for (Entry<Seater, Integer> entry : show.seatAndFilledCount.entrySet()) {
+						revenue = revenue + (entry.getValue() * entry.getKey().price);
+					}
+					if (show != null) {
+						table.addCell(show.theatre.name);
+						table.addCell(show.name);
+						table.addCell("Rs." + String.valueOf(revenue));
+					}
 				}
 			}
 			document.add(table);
 			LOGGER.info("Stored in file successfully !!!");
 			document.close();
-		} catch (FileNotFoundException | DocumentException e) {
+		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Error in writing !!!", e);
 		}
 	}

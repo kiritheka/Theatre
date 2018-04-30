@@ -14,12 +14,12 @@ public class CSVReport implements RevenueGeneration {
 			FileWriter fileWriter = new FileWriter("/home/linuxuser/Theatre Revenue.csv");
 			fileWriter.append("Theatre, show timing, Total amount Sold");
 			fileWriter.append("\n");
-			for (Show show : listOfShow) {
-				int revenue = 0;
-				for (Entry<Seater, Integer> entry : show.seatAndFilledCount.entrySet()) {
-					revenue = revenue + (entry.getValue() * entry.getKey().price);
-				}
-				if (show != null) {
+			if (listOfShow != null) {
+				for (Show show : listOfShow) {
+					int revenue = 0;
+					for (Entry<Seater, Integer> entry : show.seatAndFilledCount.entrySet()) {
+						revenue = revenue + (entry.getValue() * entry.getKey().price);
+					}
 					fileWriter.append(show.theatre.name);
 					fileWriter.append(",");
 					fileWriter.append(show.name);
