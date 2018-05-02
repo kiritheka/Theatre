@@ -1,7 +1,6 @@
 package theatrebooking;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Map.Entry;
@@ -9,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;

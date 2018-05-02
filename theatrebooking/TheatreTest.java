@@ -3,10 +3,8 @@ package theatrebooking;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
 import theatrebooking.MovieController;
-import theatrebooking.Seater;
 import theatrebooking.Show;
 import theatrebooking.ShowController;
 import theatrebooking.TheatreController;
