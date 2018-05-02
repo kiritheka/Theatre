@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public interface RevenueGeneration {
 
-	public void generateRevenueReport(ArrayList<Show> listOfShow);
+	public boolean generateRevenueReport(ArrayList<Show> listOfShows);
 
 }

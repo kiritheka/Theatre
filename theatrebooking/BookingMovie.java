@@ -19,9 +19,8 @@ public class BookingMovie {
 		String showSelection = "";
 		String seaterSelected = "";
 		Show showSelected = null;
-
-		ArrayList<Show> listOfShowsForMovie = new ArrayList<Show>();
 		boolean confirmation;
+		ArrayList<Show> listOfShowsForMovie = new ArrayList<Show>();
 
 		while (!userAction.equalsIgnoreCase("exit")) {
 			System.out.println("Do you wish to IssueTicket or AboutRevenue or exit?");
@@ -88,12 +87,17 @@ public class BookingMovie {
 						seaterSelected = scan.nextLine();
 
 						System.out.println("Choose a Number of tickets to book ");
+						while (!scan.hasNextInt()) {
+							System.out.println("Enter a proper number");
+							scan.next();
+						}
 						int numberOfTicket = scan.nextInt();
 
 						/* checking for ticket successfully booked or not */
 						confirmation = showSelected.bookTicket(seaterSelected, numberOfTicket);
 						if (confirmation != false) {
-							ticketController.generateTicket(showSelected, seaterSelected);
+							for (int i = 1; i <= numberOfTicket; i++)
+								ticketController.generateTicket(showSelected, seaterSelected);
 						} else {
 							System.out.println("Sorry..No space available.. ");
 						}
@@ -102,10 +106,13 @@ public class BookingMovie {
 					}
 				}
 			} else if (userAction.equalsIgnoreCase("AboutRevenue")) {
-				ArrayList<Show> listOfShow = showController.getlistOfShows();
-				csvReport.generateRevenueReport(listOfShow);
-				pdfReport.generateRevenueReport(listOfShow);
-
+				ArrayList<Show> listOfShows = showController.getlistOfShows();
+				boolean checkCSV = csvReport.generateRevenueReport(listOfShows);
+				if (checkCSV != false)
+					System.out.println("Stored in file successfully !!!");
+				boolean checkPDF = pdfReport.generateRevenueReport(listOfShows);
+				if (checkPDF != false)
+					System.out.println("Stored in file successfully !!!");
 			}
 		}
 	}

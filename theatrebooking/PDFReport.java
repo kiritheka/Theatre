@@ -19,11 +19,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class PDFReport implements RevenueGeneration {
 
 	@Override
-	public void generateRevenueReport(ArrayList<Show> listOfShow) {
+	public boolean generateRevenueReport(ArrayList<Show> listOfShows) {
 		Logger LOGGER = Logger.getLogger(PDFReport.class.getName());
-		Document document = new Document();
 		try {
-
+			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(new File("/home/linuxuser/Theatre Revenue.pdf")));
 			document.open();
 			PdfPTable table = new PdfPTable(3);
@@ -41,8 +40,8 @@ public class PDFReport implements RevenueGeneration {
 			table.addCell(c1);
 			table.setHeaderRows(1);
 			document.add(table);
-			if (listOfShow != null) {
-				for (Show show : listOfShow) {
+			if (listOfShows != null) {
+				for (Show show : listOfShows) {
 					int revenue = 0;
 					for (Entry<Seater, Integer> entry : show.seatAndFilledCount.entrySet()) {
 						revenue = revenue + (entry.getValue() * entry.getKey().price);
@@ -55,10 +54,11 @@ public class PDFReport implements RevenueGeneration {
 				}
 			}
 			document.add(table);
-			LOGGER.info("Stored in file successfully !!!");
 			document.close();
+			return true;
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Error in writing !!!", e);
 		}
+		return false;
 	}
 }

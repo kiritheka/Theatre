@@ -26,7 +26,6 @@ class TheatreTest {
 	CSVReport csvReport = new CSVReport();
 	PDFReport pdfReport = new PDFReport();
 
-
 	ArrayList<Show> listOfShowForMovie = new ArrayList<Show>();
 	String movieName;
 
@@ -37,7 +36,6 @@ class TheatreTest {
 
 	@Test
 	void testCheckForMovie() {
-
 		assertEquals(true, movieController.checkForMovie(movieName));
 
 		/* returns null when movie passed is not in list */
@@ -47,7 +45,6 @@ class TheatreTest {
 
 	@Test
 	void testGetlistOfShowsForMovie() {
-
 		/* returns empty list when movie don't have any shows or null object is send */
 		assertArrayEquals(listOfShowForMovie.toArray(), showController.getlistOfShowsForMovie("nomovie").toArray());
 		assertArrayEquals(listOfShowForMovie.toArray(), showController.getlistOfShowsForMovie(null).toArray());
@@ -59,17 +56,27 @@ class TheatreTest {
 
 	@Test
 	void testBookTicket() {
-
 		assertEquals(true, showController.morningfun.bookTicket("gold", 2));
 
 		// capacity of gold seater =20
 
-		/* returns null when ticket is booked against unknown seatType or 
-		 * when particular seaterType all seats are booked
+		/*
+		 * returns null when ticket is booked against unknown seatType or when
+		 * particular seaterType all seats are booked
 		 */
 		assertEquals(false, showController.morningfun.bookTicket("empty", 2));
 		assertEquals(true, showController.morningfun.bookTicket("gold", 9));
 		assertEquals(false, showController.morningfun.bookTicket("gold", 19));
+
+	}
+
+	@Test
+	void testgenerateRevenueReport() {
+		assertEquals(true, csvReport.generateRevenueReport(showController.getlistOfShows()));
+		assertEquals(true, pdfReport.generateRevenueReport(showController.getlistOfShows()));
+
+		/* when null value is passed returns false for not generating report */
+		assertEquals(false, pdfReport.generateRevenueReport(null));
 
 	}
 
