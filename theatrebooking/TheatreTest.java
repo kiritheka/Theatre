@@ -57,8 +57,7 @@ class TheatreTest {
 
 		// capacity of gold seater =20
 
-		/*
-		 * returns null when ticket is booked against unknown seatType or when
+		/* returns null when ticket is booked against unknown seatType or when
 		 * particular seaterType all seats are booked
 		 */
 		assertEquals(false, showController.morningfun.bookTicket("empty", 2));
